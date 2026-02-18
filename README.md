@@ -131,7 +131,7 @@ MIT - Sinta-se livre para usar este projeto!
 
 ## 👤 Autor
 
-Desenvolvido por **Wellington Oliveira** como resultado de aprendizado em React.
+Desenvolvido por **Wellinton Oliveira** como resultado de aprendizado em React.
 
 ---
 
