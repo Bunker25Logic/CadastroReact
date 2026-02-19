@@ -7,9 +7,20 @@ function App() {
   const [email, setEmail] = useState("");
   const [age, setIdade] = useState("");
   const [users, setUsers] = useState([]);
+  const [mensagem, setMensagem] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
+    
+    // Verificar se o email já existe
+    const usuarioExistente = users.some((user) => user.email === email);
+    
+    if (usuarioExistente) {
+      setMensagem("⚠️ Usuário já cadastrado!");
+      setTimeout(() => setMensagem(""), 3000); // Remove mensagem após 3 segundos
+      return;
+    }
+    
     const newUser = {
       id: Date.now(),
       nome,
@@ -17,11 +28,19 @@ function App() {
       age,
     };
     setUsers([...users, newUser]);
+    setMensagem("✅ Usuário cadastrado com sucesso!");
+    setTimeout(() => setMensagem(""), 3000);
+    
+    // Limpar formulário
+    setNome("");
+    setEmail("");
+    setIdade("");
   }
 
   return (
     <div className="app">
       <h1>Cadastro de Usuarios</h1>
+      {mensagem && <p className="mensagem">{mensagem}</p>}
       <form onSubmit={handleSubmit}>
         <input
           placeholder="Nome"
